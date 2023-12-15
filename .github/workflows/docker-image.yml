@@ -17,7 +17,7 @@ jobs:
           DOCKER_USER: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
         run: |
-          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+          docker login -u itlinux --password $DOCKER_PASSWORD
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag itlinux/node-test:$(date +%s)
 

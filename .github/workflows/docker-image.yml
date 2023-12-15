@@ -12,12 +12,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: docker login
-        env:
-          DOCKER_USER: ${{ secrets.DOCKERHUB_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Login
         run: |
-          docker login -u itlinux --password $DOCKER_PASSWORD
+          docker login -u itlinux -p ${{ secrets.DOCKERHUB_TOKEN}}
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag itlinux/node-test:$(date +%s)
 

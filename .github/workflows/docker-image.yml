@@ -1,20 +1,25 @@
 name: Docker Image CI
+
 on:
   push:
     branches: [master]
   pull_request:
     branches: [master]
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
       - name: docker login
         env:
-          DOCKER_USER: ${{ secrets.DOCKERHUB_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
-        run: docker login -u $DOCKER_USER -P $DOCKER_PASSWORD
+          DOCKER_USER: ${{secrets.DOCKERHUB_USERNAME}}
+          DOCKER_PASSWORD: ${{secrets.DOCKERHUB_TOKEN}}
+        run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag itlinux/node-test:$(date +%s)
+        run: docker build . --file Dockerfile --tag chamodshehanka/node-test:$(date +%s)
+
       - name: Docker Push
-        run: docker push ${secrets.DOCKER_USER}/itlinix
+        run: docker push chamodshehanka/node-test

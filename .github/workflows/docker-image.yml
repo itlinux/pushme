@@ -1,31 +1,20 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-# GitHub recommends pinning actions to a commit SHA.
-# To get a newer version, you will need to update the SHA.
-
 name: Docker Image CI
 
 on:
   push:
-    branches: [main]
+    branches: ["main"]
   pull_request:
-    branches: [main]
+    branches: ["main"]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - name: docker login
-        env:
-          DOCKER_USER: ${{ secrets.REMO1 }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
-        run: docker login -u $DOCKER_USER --password $DOCKER_PASSWORD
-      - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag itlinux/node-test:$(date +%s)
-      - name: Docker Push
-        run: docker push ${secrets.DOCKER_USER}/demo1
+      - uses: actions/checkout@v3
+      - name: Build the Docker image Results
+        working-directory: ./result
+        run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      - name: Build the Docker image Vote
+        working-directory: ./vote
+        run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)

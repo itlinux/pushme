@@ -43,13 +43,13 @@ jobs:
       ### tell docker where to push.
       ### NOTE if Docker Hub is set to true, you must set secrets above and also add account/repo/tags below
       dockerhub-enable: true
-      ghcr-enable: false
+      ghcr-enable: true
 
       ### REQUIRED
       ### A list of the account/repo names for docker build. List should match what's enabled above
       ### defaults to:
       image-names: |
-        ghcr.io/itlinux/example-voting-app-vote
+        ghcr.io/itlinux/pushme
         itlinux/voting-demo
 
       ### REQUIRED set rules for tagging images, based on special action syntax:

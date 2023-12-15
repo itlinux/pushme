@@ -1,6 +1,6 @@
 name: Build Result
 # template source: https://github.com/dockersamples/.github/blob/main/templates/call-docker-build.yaml
-
+#
 on:
   # we want pull requests so we can build(test) but not push to image registry
   push:
@@ -32,10 +32,10 @@ jobs:
     secrets:
       # Only needed if with:dockerhub-enable is true below
       dockerhub-username:
-        itlinux
+        ${{ secrets.REMO1 }}
 
         # Only needed if with:dockerhub-enable is true below
-      dockerhub-token: ${{ secrets.GITHUB_TOKEN }}
+      dockerhub-token: ${{ secrets.DOCKER_TOKEN }}
 
     with:
       ### REQUIRED

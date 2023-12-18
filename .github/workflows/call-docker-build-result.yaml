@@ -22,7 +22,7 @@ jobs:
   call-docker-build:
     name: Result Call Docker Build
 
-    uses: dockersamples/.github/.github/workflows/reusable-docker-build.yaml@main
+    uses: itlinux/.github/.github/workflows/reusable-docker-build.yaml@main
 
     permissions:
       contents: read
@@ -31,8 +31,7 @@ jobs:
 
     secrets:
       # Only needed if with:dockerhub-enable is true below
-      dockerhub-username:
-        ${{ secrets.REMO1 }}
+      dockerhub-username: ${{ secrets.REMO1 }}
 
         # Only needed if with:dockerhub-enable is true below
       dockerhub-token: ${{ secrets.DOCKER_TOKEN }}

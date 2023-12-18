@@ -1,7 +1,7 @@
 name: Build Worker
 # template source: https://github.com/dockersamples/.github/blob/main/templates/call-docker-build.yaml
 # update
-# Updated for Remo
+# Updated for Remo  
 on:
   # we want pull requests so we can build(test) but not push to image registry
   push:

@@ -34,6 +34,7 @@ jobs:
         # Tag image to be built
         # Change ${{ github.repository }} variable by another image name if you want but don't forget changing also image-tag below
         run: docker build . --file Dockerfile --tag ${{ github.repository }}:latest
+     
       - name: Build the Docker image Vote
         working-directory: ./vote
         # Tag image to be built
@@ -54,7 +55,7 @@ jobs:
           # US-West https://us2.app.sysdig.com
           # EU      https://eu1.app.sysdig.com
           sysdig-secure-url: https://app.us4.sysdig.com
-          dockerfile-path: ./vote/Dockerfile
+          dockerfile-path: ./result/Dockerfile
           input-type: docker-daemon
           ignore-failed-scan: true
           # Sysdig inline scanner requires privileged rights
